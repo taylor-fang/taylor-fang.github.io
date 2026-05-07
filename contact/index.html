@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 
-  <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
   <meta property="og:title" content="About">
   <meta name="description" content="San Francisco-based writer exploring how stories and technology shape the way we create and interact." />
@@ -32,10 +32,12 @@
 </head>
 <body>
 
+  <img class="floating-paper" src="/assets/paper-corner.png" alt="" aria-hidden="true" />
+
   <header class="site-header">
-    <a href="index.html" class="logo" data-clickable aria-label="Home">
+    <a href="/contact" class="logo" data-clickable aria-label="Home">
       <img
-        src="assets/logo.png"
+        src="/assets/logo.png"
         alt="Logo"
         class="logo-img"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
@@ -45,9 +47,9 @@
 
     <div class="nav-group">
       <nav class="nav-col" aria-label="Primary">
-            <a href="index.html" data-clickable>Projects</a>
-            <a href="about.html" data-clickable>About</a>
-            <a href="contact.html" class="is-active" data-clickable>Contact</a>
+            <a href="/" data-clickable>Projects</a>
+            <a href="/about/" data-clickable>About</a>
+            <a href="/contact/" class="is-active" data-clickable>Contact</a>
           </nav>
       
           <div class="nav-col nav-col-right">
@@ -57,7 +59,7 @@
     </div>
   </header>
 
-  <img class="about-bg-text" src="assets/font.png" alt="" aria-hidden="true" />
+  <img class="about-bg-text" src="/assets/font.png" alt="" aria-hidden="true" />
 
   <section class="simple-page">
     <h1>Contact</h1>
@@ -69,6 +71,6 @@
     </p>
   </section>
 
-  <script src="js/app.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>

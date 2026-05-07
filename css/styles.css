@@ -944,6 +944,11 @@ html * { cursor: none !important; }
 /* ============================================================================
    Simple pages (About / Contact)
    ============================================================================ */
+
+#about-page {
+  padding: 10vw;
+}
+
 .simple-page {
   padding: clamp(60px, 8vw, 120px) var(--page-pad-x);
   max-width: 720px;
