@@ -54,31 +54,32 @@
   /* --------------------------------------------------------------------------
      Custom cursor (꩜)
      -------------------------------------------------------------------------- */
-  // function initCursor() {
-  //   if (window.matchMedia('(hover: none)').matches) return;
+  function initCursor() {
+    if (window.matchMedia('(hover: none)').matches) return;
 
-  //   const cursor = document.createElement('div');
-  //   cursor.id = 'cursor';
-  //   cursor.textContent = '꩜';
-  //   cursor.style.opacity = '0';        // hidden until the first mousemove
-  //   document.body.appendChild(cursor);
+    const cursor = document.createElement('div');
+    cursor.id = 'cursor';
+    cursor.textContent = '꩜';
+    cursor.style.opacity = '0';        // hidden until the first mousemove
+    cursor.style.transform = `translate(${window.innerWidth / 2}px, 300px) translate(-50%, -50%)`;
+    document.body.appendChild(cursor);
 
-  //   let hasMoved = false;
-  //   window.addEventListener('mousemove', (e) => {
-  //     if (!hasMoved) {
-  //       cursor.style.opacity = '1';
-  //       hasMoved = true;
-  //     }
-  //     cursor.style.transform =
-  //       `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-  //   });
-  //   window.addEventListener('mousedown', () => cursor.classList.add('is-down'));
-  //   window.addEventListener('mouseup',   () => cursor.classList.remove('is-down'));
-  //   window.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
-  //   window.addEventListener('mouseenter', () => {
-  //     if (hasMoved) cursor.style.opacity = '1';
-  //   });
-  // }
+    let hasMoved = false;
+    window.addEventListener('mousemove', (e) => {
+      if (!hasMoved) {
+        cursor.style.opacity = '1';
+        hasMoved = true;
+      }
+      cursor.style.transform =
+        `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
+    window.addEventListener('mousedown', () => cursor.classList.add('is-down'));
+    window.addEventListener('mouseup',   () => cursor.classList.remove('is-down'));
+    window.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+    window.addEventListener('mouseenter', () => {
+      if (hasMoved) cursor.style.opacity = '1';
+    });
+  }
 
   /* --------------------------------------------------------------------------
      Scroll reveal
@@ -443,7 +444,7 @@
      Init
      -------------------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
-    // initCursor();
+    initCursor();
     renderCards();
     initFilters();
     initReveals();

@@ -67,7 +67,7 @@ button { background: none; border: 0; font: inherit; color: inherit; }
    ============================================================================ */
 html,
 html * { 
-  cursor: url('/assets/cursor.svg') 16 16, auto !important 
+  cursor: none !important;
 }
 
 #cursor {
