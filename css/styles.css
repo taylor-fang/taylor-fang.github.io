@@ -330,7 +330,7 @@ html * { cursor: none !important; }
 .bullet-col.no-bullets ul li::before { content: none; }
 
 #selected-writing {
-  margin-top: -7vh;
+  margin-top: -6vh;
 }
 
 @media (max-width: 560px) {
