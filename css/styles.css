@@ -233,7 +233,9 @@ html * { cursor: none !important; }
    About / intro section
    ============================================================================ */
 .about-section {
-  padding: clamp(80px, 20vh, 180px) var(--page-pad-x) clamp(60px, 8vw, 100px);
+  padding: 9vh;
+  padding-top: 4vh;
+  padding-left: 9vw;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(24px, 4vw, 56px);
@@ -261,23 +263,26 @@ html * { cursor: none !important; }
 }
 
 .about-intro {
-  grid-column: 2 / -1;
-  max-width: 780px;
+  grid-column: 1 / -1;
+  padding-left: 4vw;
+  max-width: 54vw;
 }
 
 .about-intro p {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(22px, 2vw, 30px);
+  font-size: clamp(25px, 30px, 34px);
   line-height: 1.35;
   letter-spacing: -0.015em;
+  margin-top: 2vh;
+  margin-bottom: 5vh;
 }
 
 .about-intro .intro-primary { color: var(--text); }
 .about-intro .intro-muted   { color: var(--text-muted); }
 
 .intro-bullets {
-  margin-top: clamp(32px, 4vw, 56px);
+  margin-top: 5vh;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(24px, 4vw, 48px);
@@ -293,7 +298,7 @@ html * { cursor: none !important; }
   font-weight: 400;
   font-size: 15px;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   letter-spacing: 0.01em;
 }
 
@@ -308,7 +313,7 @@ html * { cursor: none !important; }
 .bullet-col ul li {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text);
   line-height: 1.4;
   position: relative;
@@ -325,7 +330,7 @@ html * { cursor: none !important; }
 .bullet-col.no-bullets ul li::before { content: none; }
 
 #selected-writing {
-  margin-top: -2px;
+  margin-top: -7vh;
 }
 
 @media (max-width: 560px) {
