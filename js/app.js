@@ -184,7 +184,10 @@
     const root = document.getElementById('projectGrid');
     if (!root) return;
 
-    const AUTO_ROTATE_INTERVAL = 4000;  // default ms per image
+    const AUTO_ROTATE_INTERVAL = 4500;
+    const HOVER_ROTATE_INTERVAL = 2000;
+    const isMobile = window.matchMedia('(max-width: 700px)').matches
+                  || window.matchMedia('(hover: none)').matches;
 
     root.querySelectorAll('.card').forEach((card) => {
       const idx = parseInt(card.dataset.index, 10);
@@ -193,21 +196,50 @@
       const durations = project.imageDurations || [];
 
       if (imgs.length > 1) {
-        let current = 0;
+        if (isMobile) {
+          // Mobile: auto-rotate continuously
+          let current = 0;
+          const scheduleNext = () => {
+            const currentDuration = durations[current] || AUTO_ROTATE_INTERVAL;
+            const timer = setTimeout(() => {
+              imgs.forEach((im) => im.classList.remove('is-visible'));
+              current = (current + 1) % imgs.length;
+              imgs[current].classList.add('is-visible');
+              scheduleNext();
+            }, currentDuration);
+            rotationTimers.set(card, timer);
+          };
+          scheduleNext();
+        } else {
+          // Desktop: rotate only on hover
+          let current = 0;
+          let hoverTimer = null;
 
-        const scheduleNext = () => {
-          // Wait the duration of the CURRENT image before flipping to next
-          const currentDuration = durations[current] || AUTO_ROTATE_INTERVAL;
-          const timer = setTimeout(() => {
-            imgs.forEach((im) => im.classList.remove('is-visible'));
-            current = (current + 1) % imgs.length;
-            imgs[current].classList.add('is-visible');
-            scheduleNext();
-          }, currentDuration);
-          rotationTimers.set(card, timer);
-        };
+          const startRotation = () => {
+            const tick = () => {
+              imgs.forEach((im) => im.classList.remove('is-visible'));
+              current = (current + 1) % imgs.length;
+              imgs[current].classList.add('is-visible');
+              const nextDelay = durations[current] || HOVER_ROTATE_INTERVAL;
+              hoverTimer = setTimeout(tick, nextDelay);
+            };
+            // Brief delay before first rotation so user sees they triggered it
+            hoverTimer = setTimeout(tick, 600);
+          };
 
-        scheduleNext();
+          const stopRotation = () => {
+            if (hoverTimer) {
+              clearTimeout(hoverTimer);
+              hoverTimer = null;
+            }
+            // Reset to first image when hover ends
+            imgs.forEach((im, i) => im.classList.toggle('is-visible', i === 0));
+            current = 0;
+          };
+
+          card.addEventListener('mouseenter', startRotation);
+          card.addEventListener('mouseleave', stopRotation);
+        }
       }
 
       card.addEventListener('click', (e) => {
