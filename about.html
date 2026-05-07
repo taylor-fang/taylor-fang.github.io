@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo" data-clickable aria-label="Home">
+      <img
+        src="assets/logo.png"
+        alt="Logo"
+        class="logo-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+      />
+      <span class="logo-text" style="display:none;">Portez&reg;</span>
+    </a>
+
+    <div class="nav-group">
+      <nav class="nav-col" aria-label="Primary">
+            <a href="index.html" data-clickable>Projects</a>
+            <a href="about.html" class="is-active" data-clickable>About</a>
+            <a href="contact.html" data-clickable>Contact</a>
+          </nav>
+      
+          <div class="nav-col nav-col-right">
+            <span>San Francisco, CA</span>
+            <span data-localtime>—:—</span>
+          </div>
+    </div>
+  </header>
+
+  <section class="about-section reveal" data-reveal>
+    <div class="about-col">
+      <div class="about-block reveal-child">
+        <h3>About</h3>
+        <p>Taylor Fang is originally from Logan, Utah. She's a storyteller, startup operator, and former founder.</p>
+        <br>
+        <p>She graduated summa cum laude from Harvard in English with a CS Secondary.</p>
+      </div>
+    </div>
+
+    <div class="about-col">
+      <div class="about-block reveal-child">
+        <h3>Experience</h3>
+        <ul>
+          <li>Ran product marketing at Cartesia, working in BizOps</li>
+          <li>Co-founded startup that signed 7 Olympic athletes</li>
+          <li>Designed as 4th hire on team at the MIT Media Lab</li>
+          <li>Started an AI blog with 70,000+ views</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about-col">
+      <div class="about-block reveal-child">
+        <h3>Interests</h3>
+        <p>Passionate about tools & infrastructure for developers and creatives.</p>
+        <br>
+        <p>Curious about design in the age of AI, human connection facilitated by tech, and new media x environment interactions.</p>
+        <br>
+        <p>Enjoy snacks and long hikes.</p>
+      </div>
+      <div class="about-block reveal-child">
+        <h3>Links</h3>
+        <p class="links-list">
+          <a href="https://www.linkedin.com/in/tfang15/" target="_blank" rel="noopener noreferrer" data-clickable>
+              LinkedIn,
+            </a>
+            <a href="https://x.com/teafang" target="_blank" rel="noopener noreferrer" data-clickable>
+              Twitter
+            </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Portfolio</title>
+  <meta name="description" content="Personal portfolio — projects archive." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <img class="floating-paper" src="assets/paper-corner.png" alt="" aria-hidden="true" />
+
+  <!-- ========== Header ========== -->
+  <header class="site-header">
+    <a href="index.html" class="logo" data-clickable aria-label="Home">
+      <img
+        src="assets/logo.png"
+        alt="Logo"
+        class="logo-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+      />
+      <span class="logo-text" style="display:none;">Taylor Fang&reg;</span>
+    </a>
+
+    <div class="nav-group">
+      <nav class="nav-col" aria-label="Primary">
+            <a href="index.html" class="is-active" data-clickable>Projects</a>
+            <a href="about.html" data-clickable>About</a>
+            <a href="contact.html" data-clickable>Contact</a>
+          </nav>
+      
+          <div class="nav-col nav-col-right">
+            <span>SF, California</span>
+            <span data-localtime>—:—</span>
+          </div>
+    </div>
+  </header>
+
+  <!-- ========== Intro section ========== -->
+  <section class="about-section reveal" data-reveal>
+    <div class="about-col"></div>
+
+    <div class="about-intro reveal-child">
+      <p>
+        <span class="intro-primary">Hey, I'm Taylor — a writer & startup operator based in San Francisco.</span>
+        <span class="intro-muted">I build technology and tell stories about how tech shapes the way we create and interact.</span>
+      </p>
+
+      <div class="intro-bullets">
+        <div class="bullet-col reveal-child">
+          <h4>Most Recently</h4>
+          <ul>
+            <li>Worked in BizOps @ Cartesia, where I ran product marketing</li>
+            <li>Co-founded a startup that signed 7 Olympic athletes</li>
+          </ul>
+        </div>
+        <div class="bullet-col reveal-child">
+          <h4>Previously</h4>
+          <ul>
+            <li>Studied English and CS @ Harvard (summa cum laude)</li>
+            <li>Designed @ the MIT Media Lab, Lab for Social Machines</li>
+            <li>Interned at the UN and World Data Lab</li>
+            <li>Built content strategy 0 -> 1 @ Foothill Ventures</li>
+          </ul>
+        </div>
+
+        <div class="bullet-col bullet-col-full no-bullets reveal-child" id="selected-writing">
+          <h4>Selected Writing</h4>
+          <ul>
+            <li>Published in <i>MIT Technology Review</i>, <i>New York Times</i>, and <i>Pulitzer Center</i></li>
+            <li>Exhibited at United Nations Headquarters, Smithsonian Museum, and Nora Eccles Harrison Museum</li>
+            <li>Recognized with Academy of American Poets Prize, Lloyd McKim Garrison Prize, and as a former National Student Poet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========== Filter "tape" bar ========== -->
+  <section class="filter-bar reveal" data-reveal aria-label="Filter">
+    <div class="filter-paper-wrap">
+      <img class="filter-paper-bg" src="assets/note.png" alt="" aria-hidden="true" />
+      <div class="filter-bar-inner">
+        <img class="filter-title" src="assets/gallery.png" alt="" aria-hidden="true" />
+        <button class="filter-tape filter-tape-all is-active reveal-child" data-filter="all" data-clickable>
+          <img src="assets/tags/all.png" alt="All" />
+        </button>
+        <div class="filter-tape-grid">
+          <button class="filter-tape reveal-child" data-filter="storytelling" data-clickable>
+            <img src="assets/tags/storytelling.png" alt="storytelling" />
+          </button>
+          <button class="filter-tape reveal-child" data-filter="building" data-clickable>
+            <img src="assets/tags/building.png" alt="building" />
+          </button>
+          <button class="filter-tape reveal-child" data-filter="operating" data-clickable>
+            <img src="assets/tags/operating.png" alt="operating" />
+          </button>
+          <button class="filter-tape reveal-child" data-filter="connecting" data-clickable>
+            <img src="assets/tags/connecting.png" alt="connecting" />
+          </button>
+          <button class="filter-tape reveal-child" data-filter="designing" data-clickable>
+            <img src="assets/tags/designing.png" alt="designing" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Project cards ========== -->
+  <section class="cards-section">
+    <div id="projectGrid" class="project-grid reveal" data-reveal aria-label="Projects">
+      <!-- rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ========== Detail modal ========== -->
+  <div id="panelOverlay" class="panel-overlay" aria-hidden="true"></div>
+  <aside id="panel" class="panel" role="dialog" aria-modal="true"></aside>
+
+  <!-- =======================================================================
+       Tape image config — list every tape image you upload to assets/tape/
+       The JS will pick one at random for each card. Add/remove paths freely.
+       ======================================================================= -->
+  <script>
+    window.TAPE_IMAGES = [
+      "assets/tape/tape-1.png",
+      "assets/tape/tape-2.png",
+      "assets/tape/tape-3.png",
+      "assets/tape/tape-4.png"
+    ];
+  </script>
+
+  <script src="data/projects.js"></script>
+  <script src="js/app.js"></script>
+
+  <footer class="site-footer">
+    <a href="mailto:taylor.fang15@gmail.com" class="footer-image-link" data-clickable aria-label="Email me">
+      <img class="footer-image" src="assets/footer.png" alt="" aria-hidden="true" />
+    </a>
+    <img class="floating-paper-2" src="assets/paper-corner.png" alt="" aria-hidden="true" />
+  </footer>
+
+</body>
+</html>
