@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-A minimal three-page personal site built as plain HTML / CSS / JS.
+A paper and analog-inspired personal site built with plain HTML / CSS / JS.
 
 ## File structure
 
