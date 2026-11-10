@@ -56,7 +56,7 @@ img { display: block; max-width: 100%; height: auto; }
   transition: color 0.15s ease;
 }
 .nav-col a:hover, .nav-col a:focus-visible { color: var(--text); }
-.coords { font-variant-numeric: tabular-nums; }
+.coords { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* Intro */
 .intro {
@@ -109,7 +109,7 @@ img { display: block; max-width: 100%; height: auto; }
 @media (max-width: 800px) {
   .site-header { flex-wrap: wrap; }
   .logo { width: 100%; }
-  .nav-group { gap: 32px; padding-top: 0; }
+  .nav-group { flex-wrap: wrap; gap: 16px 32px; padding-top: 0; }
   .nav-col-right { text-align: left; align-items: flex-start; }
   .intro { padding: 48px var(--pad-x); }
 }

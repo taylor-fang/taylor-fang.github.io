@@ -2,13 +2,12 @@ import '@fontsource-variable/inter/wght.css'
 import '@fontsource-variable/manrope/wght.css'
 import './styles.css'
 
-// Transamerica Redwood Park, Financial District
-const COORDS = { lat: 37.7951, lng: -122.4025 }
+// Strawberry Hill, Golden Gate Park
+const COORDS = { lat: 37.7686, lng: -122.4754 }
 
 const LINKS = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tfang15/' },
   { label: 'Twitter', href: 'https://x.com/teafang' },
-  { label: 'Email', href: 'mailto:taylor.fang15@gmail.com' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tfang15/' },
 ]
 
 const RECENT = [
@@ -35,24 +34,17 @@ function Header() {
         <img src="/logo.webp" alt="Taylor Fang" width="820" height="195" fetchPriority="high" />
       </a>
       <div className="nav-group">
-        <nav className="nav-col" aria-label="Links">
+        <nav className="nav-col" aria-label="Contact">
+          <span>taylor.fang15[at]gmail.com</span>
           {LINKS.map(({ label, href }) => (
-            <a key={label} href={href} {...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}>
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer">
               {label}
             </a>
           ))}
         </nav>
         <div className="nav-col nav-col-right">
           <span>San Francisco, CA</span>
-          <a
-            href={`https://www.google.com/maps?q=${COORDS.lat},${COORDS.lng}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="coords"
-            title="Transamerica Redwood Park"
-          >
-            {formatCoords(COORDS)}
-          </a>
+          <span className="coords">{formatCoords(COORDS)}</span>
         </div>
       </div>
     </header>
