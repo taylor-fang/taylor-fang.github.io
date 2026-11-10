@@ -1,17 +1,13 @@
-# Personal Portfolio
+# taylor-fang.github.io
 
-A paper and analog-inspired personal site built with plain HTML / CSS / JS.
+Personal site. React + Vite, prerendered to static HTML at build time (no JS shipped to the browser).
 
-## File structure
-
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # outputs dist/
 ```
-/
-├── index.html            ← Projects page
-├── about.html            ← About page 
-├── contact.html          ← Contact page
-├── css/
-│   └── styles.css        ← All styling, design tokens, responsive rules
-├── js/
-│   └── app.js            ← Custom cursor, grid rendering, detail panel
-├── data/
-│   └── projects.js       ← Add/update projects
+
+- Content lives in `src/App.jsx`, styles in `src/styles.css`.
+- Deploys via `.github/workflows/deploy.yml` on push to `main`. In repo Settings → Pages, set Source to **GitHub Actions**.
+- The previous site (projects gallery, about, contact, all images) is archived untouched in `legacy/`. It is not part of the build.
