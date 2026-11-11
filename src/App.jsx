@@ -9,23 +9,22 @@ const COORDS = { lat: 37.7686, lng: -122.4754 }
 const LINKS = [
   { label: 'Twitter', href: 'https://x.com/teafang' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tfang15/' },
+  { label: 'GitHub', href: 'https://github.com/taylor-fang' },
 ]
 
-const RECENT = [
-  'Worked in BizOps @ Cartesia, where I ran product marketing',
-  'Co-founded a startup that signed 7 Olympic athletes',
-]
-
-const PREVIOUS = [
-  'Studied English and CS at Harvard (summa cum laude)',
-  'Worked as a designer at the MIT Media Lab',
-  'Spent summers at the UN, World Data Lab, and Impactive (acquired). Gap year at Foothill Ventures',
-]
+function toDMS(value, pos, neg) {
+  const abs = Math.abs(value)
+  let deg = Math.floor(abs)
+  let min = Math.floor((abs - deg) * 60)
+  let sec = Math.round(((abs - deg) * 60 - min) * 60)
+  if (sec === 60) [sec, min] = [0, min + 1]
+  if (min === 60) [min, deg] = [0, deg + 1]
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${deg}°${pad(min)}′${pad(sec)}″ ${value >= 0 ? pos : neg}`
+}
 
 function formatCoords({ lat, lng }) {
-  const ns = lat >= 0 ? 'N' : 'S'
-  const ew = lng >= 0 ? 'E' : 'W'
-  return `${Math.abs(lat).toFixed(4)}° ${ns}, ${Math.abs(lng).toFixed(4)}° ${ew}`
+  return `${toDMS(lat, 'N', 'S')}, ${toDMS(lng, 'E', 'W')}`
 }
 
 // The handwritten logo "writes itself": the raster logo is revealed through a
@@ -79,47 +78,34 @@ function Header() {
   )
 }
 
-function List({ title, items }) {
-  return (
-    <div className="bullet-col">
-      <h2>{title}</h2>
-      <ul>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <>
       <Header />
       <main className="intro">
-        <p className="lede">
-          <span>Hey, I’m Taylor — a writer &amp; startup operator based in San Francisco.</span>{' '}
-          <span className="muted">I build technology and tell stories about how tech shapes the way we create and interact.</span>
+        <p>
+          I’m Taylor, a writer based in San Francisco. I work at General Translation on our{' '}
+          <a href="https://generaltranslation.com/en-US/blog" target="_blank" rel="noopener noreferrer">
+            blog
+          </a>{' '}
+          and{' '}
+          <a href="https://generaltranslation.com/atlas" target="_blank" rel="noopener noreferrer">
+            magazine
+          </a>
+          .
         </p>
-
-        <div className="bullets">
-          <List title="Most Recently" items={RECENT} />
-          <List title="Previously" items={PREVIOUS} />
-        </div>
-
-        <div className="bullet-col plain">
-          <h2>Selected Writing</h2>
-          <ul>
-            <li>
-              Published in <i>MIT Technology Review</i>, <i>New York Times</i>, and <i>Pulitzer Center</i>
-            </li>
-            <li>Exhibited at United Nations Headquarters, Smithsonian Museum, and Nora Eccles Harrison Museum</li>
-            <li>
-              Recognized by Academy of American Poets Prize, Lloyd McKim Garrison Prize, and as a former National
-              Student Poet
-            </li>
-          </ul>
-        </div>
+        <p>
+          My writing has been published in the New York Times, MIT Tech Review, and Pulitzer Center, and exhibited at
+          the United Nations and Smithsonian Museum.
+        </p>
+        <p>
+          I studied English with a CS secondary at Harvard, where I graduated summa cum laude and received the Academy
+          of American Poets prize.
+        </p>
+        <p>
+          Previously I worked &amp; interned at Cartesia, the UN, World Data Lab, Impactive, MIT Media Lab, and
+          Foothill Ventures.
+        </p>
       </main>
     </>
   )
