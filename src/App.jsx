@@ -1,6 +1,7 @@
 import '@fontsource-variable/inter/wght.css'
 import '@fontsource-variable/manrope/wght.css'
 import './styles.css'
+import logo from './logo-strokes.json'
 
 // Strawberry Hill, Golden Gate Park
 const COORDS = { lat: 37.7686, lng: -122.4754 }
@@ -27,17 +28,44 @@ function formatCoords({ lat, lng }) {
   return `${Math.abs(lat).toFixed(4)}° ${ns}, ${Math.abs(lng).toFixed(4)}° ${ew}`
 }
 
+// The handwritten logo "writes itself": the raster logo is revealed through a
+// mask of strokes traced along its centerlines (scripts/trace-logo.py), each
+// drawn in sequence at a constant pen speed. Pure CSS, runs once on load.
+const PEN_SPEED = 3200 // px per second, in logo coordinates
+const PEN_LIFT = 0.02 // seconds between strokes
+const START = 0.15
+
+function Signature() {
+  let t = START
+  const strokes = logo.strokes.map((s) => {
+    const dur = s.len / PEN_SPEED
+    const style = { '--len': s.len, '--dur': `${dur.toFixed(3)}s`, '--delay': `${t.toFixed(3)}s` }
+    t += dur + PEN_LIFT
+    return <path key={s.d} d={s.d} style={style} />
+  })
+  return (
+    <svg className="signature" viewBox={`0 0 ${logo.w} ${logo.h}`} role="img" aria-label="Taylor Fang">
+      <mask id="signature-ink" maskUnits="userSpaceOnUse" x="0" y="0" width={logo.w} height={logo.h}>
+        <g fill="none" stroke="#fff" strokeWidth="24" strokeLinecap="round" strokeLinejoin="round">
+          {strokes}
+        </g>
+      </mask>
+      <image href="/logo.webp" width={logo.w} height={logo.h} mask="url(#signature-ink)" />
+    </svg>
+  )
+}
+
 function Header() {
   return (
     <header className="site-header">
       <a href="/" className="logo" aria-label="Taylor Fang, home">
-        <img src="/logo.webp" alt="Taylor Fang" width="820" height="195" fetchPriority="high" />
+        <Signature />
       </a>
       <div className="nav-group">
         <nav className="nav-col" aria-label="Contact">
           <span>taylor.fang15[at]gmail.com</span>
           {LINKS.map(({ label, href }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer">
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="squiggle">
               {label}
             </a>
           ))}
