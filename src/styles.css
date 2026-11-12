@@ -7,7 +7,8 @@
   --pad-x: clamp(20px, 4vw, 56px);
   --pad-y: clamp(20px, 3vw, 40px);
   --logo-h: clamp(52px, 7vw, 96px);
-  --cursor: url('/cursors/fountain.svg') 2 30; /* hotspot at the nib */
+  /* Black fountain pen, inlined so it is there on first paint; hotspot at the nib */
+  --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cg transform='translate%282.2 29.8%29 rotate%28-45%29'%3E%3Cpath d='M0 0L9 -3L9 3Z' fill='%23111'/%3E%3Cpath d='M2 0H7' stroke='%238a8a8a' stroke-width='.6'/%3E%3Crect x='9' y='-2.6' width='5' height='5.2' fill='%23000'/%3E%3Crect x='14' y='-3.2' width='21' height='6.4' rx='3' fill='%23151515'/%3E%3Crect x='14' y='-3.2' width='1.2' height='6.4' fill='%23555'/%3E%3Cpath d='M17 -1.9H32' stroke='%233a3a3a' stroke-width='.9' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") 2 30;
   --brown-1: #876a4c;
   --brown-2: #9d8164;
 }
@@ -71,6 +72,7 @@ img { display: block; max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .signature path { animation: none; stroke-dashoffset: 0; }
   .squiggle::after { transition: none; }
+  .intro a::after { animation: none !important; }
 }
 
 .nav-group { padding-top: 10px; }
@@ -110,18 +112,33 @@ img { display: block; max-width: 100%; height: auto; }
 .intro p:nth-child(2) { color: var(--brown-1); }
 .intro p:nth-child(3) { color: var(--brown-2); }
 
-.intro a {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.15em;
-  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
-  transition: text-decoration-color 0.2s ease;
+.intro a { position: relative; }
+/* Hand-drawn underline: one slightly rising pen stroke that sits across the
+   descenders, faint at rest and drawn in fresh on hover. */
+.intro a::after {
+  content: '';
+  position: absolute;
+  left: -3%;
+  right: -5%;
+  bottom: 0.08em;
+  height: 0.3em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M1 8.2C12 7.9 21 7.1 33 6.9S52 6.6 61 5.6 82 4.2 99 2.6' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M1 8.2C12 7.9 21 7.1 33 6.9S52 6.6 61 5.6 82 4.2 99 2.6' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  opacity: 0.4;
+  transform: rotate(-1.2deg);
+  transition: opacity 0.2s ease;
 }
-.intro a:hover, .intro a:focus-visible {
-  text-decoration-style: wavy;
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 1.5px;
+.intro a:nth-of-type(2)::after {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M1 7.4C9 7.7 19 6.6 30 6.4S49 5.2 58 5.5 79 3.9 99 3.4' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M1 7.4C9 7.7 19 6.6 30 6.4S49 5.2 58 5.5 79 3.9 99 3.4' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  transform: rotate(-0.6deg);
 }
+.intro a:hover::after, .intro a:focus-visible::after {
+  opacity: 1;
+  animation: underline-draw 0.35s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+@keyframes underline-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 
 /* Contact row, under the bottom rule */
 .contact {
