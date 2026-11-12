@@ -77,11 +77,11 @@ export default function App() {
       <main className="intro">
         <p>
           I’m Taylor, a writer based in San Francisco. I work at General Translation on our{' '}
-          <a href="https://generaltranslation.com/en-US/blog" target="_blank" rel="noopener noreferrer">
+          <a className="flourish" href="https://generaltranslation.com/en-US/blog" target="_blank" rel="noopener noreferrer">
             blog
           </a>{' '}
           and{' '}
-          <a href="https://generaltranslation.com/atlas" target="_blank" rel="noopener noreferrer">
+          <a className="flourish" href="https://generaltranslation.com/atlas" target="_blank" rel="noopener noreferrer">
             magazine
           </a>
           .
@@ -98,7 +98,7 @@ export default function App() {
       <footer className="contact" aria-label="Contact">
         <span data-no-ink>taylor.fang15[at]gmail.com</span>
         {LINKS.map(({ label, href }) => (
-          <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="squiggle">
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="flourish">
             {label}
           </a>
         ))}
