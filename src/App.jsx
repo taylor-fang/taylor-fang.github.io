@@ -61,14 +61,6 @@ function Header() {
         <Signature />
       </a>
       <div className="nav-group">
-        <nav className="nav-col" aria-label="Contact">
-          <span>taylor.fang15[at]gmail.com</span>
-          {LINKS.map(({ label, href }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="squiggle">
-              {label}
-            </a>
-          ))}
-        </nav>
         <div className="nav-col nav-col-right">
           <span>San Francisco, CA</span>
           <span className="coords">{formatCoords(COORDS)}</span>
@@ -102,11 +94,15 @@ export default function App() {
           I studied English with a CS secondary at Harvard, where I graduated summa cum laude and received the Academy
           of American Poets prize.
         </p>
-        <p>
-          Previously I worked &amp; interned at Cartesia, the UN, World Data Lab, Impactive, MIT Media Lab, and
-          Foothill Ventures.
-        </p>
       </main>
+      <footer className="contact" aria-label="Contact">
+        <span data-no-ink>taylor.fang15[at]gmail.com</span>
+        {LINKS.map(({ label, href }) => (
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="squiggle">
+            {label}
+          </a>
+        ))}
+      </footer>
     </>
   )
 }

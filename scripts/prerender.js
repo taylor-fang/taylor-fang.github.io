@@ -1,8 +1,9 @@
-// Renders App to static HTML, inlines the CSS, preloads the latin fonts,
-// and drops the client JS bundle (the page has no interactive state).
+// Renders App to static HTML, inlines the CSS and the ink script, preloads
+// the latin fonts, and drops the React client bundle (nothing needs hydrating).
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { transform } from 'esbuild'
 
 const dist = path.resolve('dist')
 const ssrDir = path.resolve('dist-ssr')
@@ -24,6 +25,10 @@ html = html.replace(/<link rel="modulepreload"[^>]*>\s*/g, '')
 for (const f of fs.readdirSync(path.join(dist, 'assets'))) {
   if (f.endsWith('.js')) fs.rmSync(path.join(dist, 'assets', f))
 }
+
+// Inline the small, dependency-free ink script (module scripts run after parse).
+const ink = await transform(fs.readFileSync('src/ink.js', 'utf8'), { minify: true, format: 'esm' })
+html = html.replace('</body>', `<script type="module">${ink.code.trim()}</script>\n  </body>`)
 
 // Preload the latin font files so text paints without waiting on CSS parse.
 const fonts = fs

@@ -10,7 +10,6 @@
   --cursor: url('/cursors/fountain.svg') 2 30; /* hotspot at the nib */
   --brown-1: #876a4c;
   --brown-2: #9d8164;
-  --brown-3: #b0977b;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,12 +73,7 @@ img { display: block; max-width: 100%; height: auto; }
   .squiggle::after { transition: none; }
 }
 
-.nav-group {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(72px, 10vw, 144px);
-  padding-top: 10px;
-}
+.nav-group { padding-top: 10px; }
 
 .nav-col { display: flex; flex-direction: column; gap: 4px; }
 .nav-col-right { text-align: right; align-items: flex-end; }
@@ -92,11 +86,15 @@ img { display: block; max-width: 100%; height: auto; }
 .nav-col a:hover, .nav-col a:focus-visible { color: var(--text); }
 .coords { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
+/* Text column left edge: the logo's first ink stroke (38/243 of its
+   height in from the image edge). */
+:root { --text-left: calc(var(--pad-x) + var(--logo-h) * 38 / 243); }
+
 /* Intro: paragraphs start at the logo's first ink stroke (38/243 of its
    height in from the image edge) and fade through lighter browns. */
 .intro {
   padding: clamp(48px, 10vh, 120px) var(--pad-x) clamp(48px, 9vh, 100px)
-    calc(var(--pad-x) + var(--logo-h) * 38 / 243);
+    var(--text-left);
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -111,7 +109,6 @@ img { display: block; max-width: 100%; height: auto; }
 .intro p:nth-child(1) { color: var(--text); }
 .intro p:nth-child(2) { color: var(--brown-1); }
 .intro p:nth-child(3) { color: var(--brown-2); }
-.intro p:nth-child(4) { color: var(--brown-3); }
 
 .intro a {
   text-decoration: underline;
@@ -126,10 +123,34 @@ img { display: block; max-width: 100%; height: auto; }
   text-decoration-thickness: 1.5px;
 }
 
+/* Contact row, under the bottom rule */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  padding: 28px var(--pad-x) 40px var(--text-left);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+.contact a { transition: color 0.15s ease; }
+.contact a:hover, .contact a:focus-visible { color: var(--text); }
+.contact [data-no-ink] { user-select: all; }
+
+/* Ink layer drawn by src/ink.js */
+.ink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+  z-index: 3;
+}
+
 @media (max-width: 800px) {
   .site-header { flex-wrap: wrap; }
   .logo { width: 100%; }
-  .nav-group { flex-wrap: wrap; gap: 16px 32px; padding-top: 0; }
+  .nav-group { padding-top: 0; }
   .nav-col-right { text-align: left; align-items: flex-start; }
   .intro { padding-block: 48px; }
 }
