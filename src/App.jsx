@@ -86,13 +86,17 @@ export default function App() {
           </a>
           .
         </p>
+        <p>I’m originally from a small mountain-town in Utah and I studied English at Harvard.</p>
         <p>
-          My writing has been published in the New York Times, MIT Tech Review, and Pulitzer Center, and exhibited at
-          the United Nations and Smithsonian Museum.
-        </p>
-        <p>
-          I studied English with a CS secondary at Harvard, where I graduated summa cum laude and received the Academy
-          of American Poets prize.
+          I made some writing software called{' '}
+          <a className="flourish" href="https://paperwrite.space" target="_blank" rel="noopener noreferrer">
+            Paper
+          </a>
+          . And here’s a{' '}
+          <a className="flourish" href="https://poets.org/2023-lieu-watching-news" target="_blank" rel="noopener noreferrer">
+            poem
+          </a>
+          .
         </p>
       </main>
       <footer className="contact" aria-label="Contact">
