@@ -86,7 +86,7 @@ export default function App() {
           </a>
           .
         </p>
-        <p>I’m originally from a small mountain-town in Utah and I studied English at Harvard.</p>
+        <p>I’m originally from a small mountain town in Utah and I studied English at Harvard.</p>
         <p>
           I made some writing software called{' '}
           <a className="flourish" href="https://paperwrite.space" target="_blank" rel="noopener noreferrer">
