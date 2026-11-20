@@ -86,13 +86,28 @@ export default function App() {
           </a>
           .
         </p>
-        <p>I’m originally from a small mountain town in Utah and I studied English at Harvard.</p>
+        <p>
+          I’m originally from a small{' '}
+          <a className="flourish" href="https://www.google.com/search?q=logan+canyon&udm=2" target="_blank" rel="noopener noreferrer">
+            mountain-town
+          </a>{' '}
+          in Utah. I studied English at{' '}
+          <a
+            className="flourish"
+            href="https://ofa.fas.harvard.edu/sites/g/files/omnuum13031/files/makeart/files/adf24_pressrelease_final_4-5-24_da.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Harvard
+          </a>
+          .
+        </p>
         <p>
           I made some writing software called{' '}
           <a className="flourish" href="https://paperwrite.space" target="_blank" rel="noopener noreferrer">
             Paper
           </a>
-          . And here’s a{' '}
+          . Here’s a{' '}
           <a className="flourish" href="https://poets.org/2023-lieu-watching-news" target="_blank" rel="noopener noreferrer">
             poem
           </a>
