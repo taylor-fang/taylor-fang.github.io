@@ -103,7 +103,7 @@ export default function App() {
           .
         </p>
         <p>
-          I made a writing software called{' '}
+          I made a writing surface called{' '}
           <a className="flourish" href="https://paperwrite.space" target="_blank" rel="noopener noreferrer">
             Paper
           </a>
