@@ -103,13 +103,13 @@ export default function App() {
           .
         </p>
         <p>
-          I made some writing software called{' '}
+          I made a writing software called{' '}
           <a className="flourish" href="https://paperwrite.space" target="_blank" rel="noopener noreferrer">
             Paper
           </a>
-          . Here’s a{' '}
+          . I also make{' '}
           <a className="flourish" href="https://poets.org/2023-lieu-watching-news" target="_blank" rel="noopener noreferrer">
-            poem
+            poems
           </a>
           .
         </p>
