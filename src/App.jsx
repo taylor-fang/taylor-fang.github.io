@@ -1,15 +1,16 @@
 import '@fontsource-variable/inter/wght.css'
 import '@fontsource-variable/manrope/wght.css'
 import './styles.css'
+import './flourishes.css'
 import logo from './logo-strokes.json'
 
 // Strawberry Hill, Golden Gate Park
 const COORDS = { lat: 37.7686, lng: -122.4754 }
 
 const LINKS = [
-  { label: 'Twitter', href: 'https://x.com/teafang' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tfang15/' },
-  { label: 'GitHub', href: 'https://github.com/taylor-fang' },
+  { label: 'Twitter', href: 'https://x.com/teafang', v: 'flick' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tfang15/', v: 'double' },
+  { label: 'GitHub', href: 'https://github.com/taylor-fang', v: 'curl' },
 ]
 
 function toDMS(value, pos, neg) {
@@ -70,6 +71,15 @@ function Header() {
   )
 }
 
+// External link with a hand-drawn hover mark; v picks the mark (src/flourishes.css).
+function Ink({ href, v = 'flick', children }) {
+  return (
+    <a className={`flourish f-${v}`} href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  )
+}
+
 export default function App() {
   return (
     <>
@@ -77,49 +87,44 @@ export default function App() {
       <main className="intro">
         <p>
           I’m Taylor, a writer based in San Francisco. I work at General Translation on our{' '}
-          <a className="flourish" href="https://generaltranslation.com/en-US/blog" target="_blank" rel="noopener noreferrer">
+          <Ink href="https://generaltranslation.com/en-US/blog" v="flick">
             blog
-          </a>{' '}
+          </Ink>{' '}
           and{' '}
-          <a className="flourish" href="https://generaltranslation.com/atlas" target="_blank" rel="noopener noreferrer">
+          <Ink href="https://generaltranslation.com/atlas" v="double">
             magazine
-          </a>
+          </Ink>
           .
         </p>
         <p>
-          I’m originally from a small{' '}
-          <a className="flourish" href="https://www.google.com/search?q=logan+canyon&udm=2" target="_blank" rel="noopener noreferrer">
-            mountain-town
-          </a>{' '}
-          in Utah. I studied English at{' '}
-          <a
-            className="flourish"
-            href="https://ofa.fas.harvard.edu/sites/g/files/omnuum13031/files/makeart/files/adf24_pressrelease_final_4-5-24_da.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Harvard
-          </a>
-          .
+          I’m originally from a{' '}
+          <Ink href="https://www.google.com/search?q=logan+canyon&udm=2" v="loop">
+            small mountain-town
+          </Ink>{' '}
+          in Utah. I{' '}
+          <Ink href="https://ofa.fas.harvard.edu/sites/g/files/omnuum13031/files/makeart/files/adf24_pressrelease_final_4-5-24_da.pdf" v="curl">
+            studied
+          </Ink>{' '}
+          English &amp; CS at Harvard.
         </p>
         <p>
           I made a writing surface called{' '}
-          <a className="flourish" href="https://paperwrite.space" target="_blank" rel="noopener noreferrer">
+          <Ink href="https://paperwrite.space" v="wave">
             Paper
-          </a>
+          </Ink>
           . I also make{' '}
-          <a className="flourish" href="https://poets.org/2023-lieu-watching-news" target="_blank" rel="noopener noreferrer">
+          <Ink href="https://poets.org/2023-lieu-watching-news" v="loopend">
             poems
-          </a>
+          </Ink>
           .
         </p>
       </main>
       <footer className="contact" aria-label="Contact">
         <span data-no-ink>taylor.fang15[at]gmail.com</span>
-        {LINKS.map(({ label, href }) => (
-          <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="flourish">
+        {LINKS.map(({ label, href, v }) => (
+          <Ink key={label} href={href} v={v}>
             {label}
-          </a>
+          </Ink>
         ))}
       </footer>
     </>
